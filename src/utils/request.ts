@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const request = (query: string, variables?: object) => {
-  return axios('http://soulfree.cn/index.php?graphql', {
+  return axios(import.meta.env.VITE_WP_BASEURL, {
     headers: {
       'Content-Type': 'application/json',
     },

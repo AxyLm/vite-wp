@@ -12,18 +12,11 @@ declare module '*.md' {
 interface ImportMetaEnv extends Readonly<Record<string, string>> {
   readonly VITE_APP_DEV: string;
   readonly VITE_APP_TITLE: string;
-  readonly VITE_APP_ENV: string;
-  readonly VITE_APP_SSO_KEY: string;
-  readonly VITE_APP_CORE_URL: string;
-  readonly VITE_APP_SSO_DOMAIN: string;
+  readonly VITE_WP_BASEURL: string;
 }
 
 interface ImportMeta {
   readonly env: ImportMetaEnv;
-}
-
-interface AppModule {
-  install: (app: App<Element>) => void;
 }
 
 declare module 'nprogress' {

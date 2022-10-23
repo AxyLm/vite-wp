@@ -11,9 +11,10 @@ export default {
       '~/': `${path.resolve(__dirname, './src')}/`,
     },
   },
+  envDir: 'config/',
   server: {
     host: '0.0.0.0',
-    port: 5173,
+    port: 8303,
     watch: {
       ignored: ['./config/*'],
     },
