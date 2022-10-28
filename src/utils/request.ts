@@ -15,7 +15,7 @@ export const request = (query: string, variables?: object) => {
   }).then((res) => res.data);
 };
 
-export const getAllPosts = () => {
+export const getAllBlogs = () => {
   return request(`query AllPosts {
       posts(first: 15, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
@@ -46,7 +46,7 @@ export const getAllPosts = () => {
     }`);
 };
 
-export const getAllPostIds = () => {
+export const getAllBlogIds = () => {
   return request(`query AllPosts {
       posts(first: 15, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
@@ -58,7 +58,7 @@ export const getAllPostIds = () => {
     }`);
 };
 
-export const getPostById = (id: string) => {
+export const getBlogById = (id: string) => {
   return request(`
   {
     post( id: "${id}" idType: DATABASE_ID){

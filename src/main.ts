@@ -6,12 +6,12 @@ import { ViteSSG } from 'vite-ssg';
 import { routes as baseRoutes } from './router';
 import { createPinia } from 'pinia';
 import { RouteRecordRaw } from 'vue-router';
-import { getAllPostIds } from '~/utils/request';
+import { getAllBlogIds } from '~/utils/request';
 import NProgress from 'nprogress';
 import '~/style/nprogress.less';
 
 export async function includedRoutes(paths: string[], routes: RouteRecordRaw[]) {
-  const postIds = await getAllPostIds().then((res) =>
+  const postIds = await getAllBlogIds().then((res) =>
     res.data.posts.edges.map((e) => e.node.postId),
   );
 

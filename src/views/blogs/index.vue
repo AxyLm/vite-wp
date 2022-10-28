@@ -1,16 +1,16 @@
 <script lang="ts">
   import { useHead } from '@vueuse/head';
   import { ref } from 'vue';
-  import { getAllPosts } from '~/utils/request';
-
+  import { getAllBlogs } from '~/utils/request';
+  import { Blogs } from './type';
   export default {
-    name: 'Blog',
+    name: 'Blogs',
     setup() {
       useHead({
         title: 'Blog',
       });
-      const posts = ref<any[]>([]);
-      getAllPosts().then((res) => {
+      const posts = ref<{ node: Blogs }[]>([]);
+      getAllBlogs().then((res) => {
         posts.value = res.data.posts.edges;
       });
       return {
@@ -18,7 +18,7 @@
       };
     },
     async serverPrefetch() {
-      const post = await getAllPosts().then((res) => res.data.posts.edges);
+      const post = await getAllBlogs().then((res) => res.data.posts.edges);
       this.posts = post;
       return {
         post,

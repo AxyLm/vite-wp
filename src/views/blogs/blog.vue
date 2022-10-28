@@ -2,7 +2,8 @@
   import { Head, useHead } from '@vueuse/head';
   import { ref } from 'vue';
   import { useRoute } from 'vue-router';
-  import { getPostById } from '~/utils/request';
+  import { getBlogById } from '~/utils/request';
+  import { Blog } from './type';
   import BlogRender from './components/blog-render.vue';
   export default {
     name: 'Blog',
@@ -13,9 +14,9 @@
     },
     setup() {
       const route = useRoute();
-      const post = ref();
+      const post = ref<Blog>();
       const { postId } = route.params;
-      getPostById(postId as string).then((res) => {
+      getBlogById(postId as string).then((res) => {
         post.value = res.data.post;
       });
 
@@ -31,7 +32,7 @@
     async serverPrefetch() {
       const route = useRoute();
       const { postId } = route.params;
-      const post = await getPostById(postId as string);
+      const post = await getBlogById(postId as string);
 
       return {
         post,
