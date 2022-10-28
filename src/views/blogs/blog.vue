@@ -1,11 +1,16 @@
 <script lang="ts">
-  import { useHead } from '@vueuse/head';
+  import { Head, useHead } from '@vueuse/head';
   import { ref } from 'vue';
   import { useRoute } from 'vue-router';
   import { getPostById } from '~/utils/request';
-
+  import BlogRender from './components/blog-render.vue';
   export default {
-    name: 'Post',
+    name: 'Blog',
+    components: {
+      BlogRender,
+      // eslint-disable-next-line vue/no-reserved-component-names
+      Head,
+    },
     setup() {
       const route = useRoute();
       const post = ref();
@@ -13,6 +18,11 @@
       getPostById(postId as string).then((res) => {
         post.value = res.data.post;
       });
+
+      useHead({
+        title: () => post?.value?.title ?? '-',
+      });
+
       return {
         postId: route.params.postId,
         post: post,
@@ -32,26 +42,20 @@
 
 <template>
   <div>
-    <div class="breadcrumbs text-sm">
-      <ul>
-        <li><RouterLink to="/" active-class="font-bold">> Post </RouterLink></li>
-        <li
-          ><RouterLink :to="`/posts/${postId}`" active-class="font-bold">
-            {{ postId }}</RouterLink
-          ></li
-        >
-      </ul>
-    </div>
-    <div class="hero pt-20">
-      <div class="hero-content flex-col lg:flex-row-reverse">
-        <div>
-          <h1 class="text-5xl font-bold">{{ post?.title }}</h1>
-          <p class="py-6" v-html="post?.content"></p>
-          <!-- <button class="btn btn-primary">Get Started</button> -->
-        </div>
-      </div>
+    <Head>
+      <title>{{ post?.title }}</title>
+    </Head>
+    <div class="post m-auto px-7 py-10">
+      <h1 class="text-5xl font-bold">{{ post?.title }}</h1>
+      <blog-render :content="post?.content" />
     </div>
   </div>
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+  .post {
+    max-width: 75ch;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+</style>

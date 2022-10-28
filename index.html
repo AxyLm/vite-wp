@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html lang="zh" class="leading-tight">
+<html lang="zh" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="/vite.svg" type="image/svg+xml" />
+    <link rel="shortcut icon" href="/logo.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A vue blog with ssg</title>
     <script>
       (function () {
-        const prefersDark =
-          window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const setting = localStorage.getItem('vueuse-color-scheme') || 'auto';
-        if (setting === 'dark' || (prefersDark && setting !== 'light'))
-          document.documentElement.classList.toggle('dark', true);
+        if (setting === 'auto') {
+          if (window.matchMedia) {
+            const themeMedia = window.matchMedia('(prefers-color-scheme: light)');
+            themeMedia.addListener((e) => {
+              document.documentElement.dataset.theme = e.matches ? 'light' : 'dark';
+            });
+          }
+        } else {
+          document.documentElement.dataset.theme = setting;
+        }
       })();
     </script>
   </head>
 
   <body class="body">
-    <div id="app"></div>
+    <div id="app" class="h-screen w-screen"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

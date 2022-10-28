@@ -3,6 +3,7 @@ import * as path from 'path';
 import Icons from 'unplugin-icons/vite';
 import Components from 'unplugin-vue-components/vite';
 import IconsResolver from 'unplugin-icons/resolver';
+import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 
 // https://vitejs.dev/config/
 export default {
@@ -36,6 +37,11 @@ export default {
       defaultClass: 'icon', // Class names apply to icons
       autoInstall: true,
       compiler: 'vue3',
+      customCollections: {
+        logo: FileSystemIconLoader('./public/', (svg) =>
+          svg.replace(/^<svg /, '<svg fill="currentColor" '),
+        ),
+      },
     }),
     Components({
       resolvers: [
