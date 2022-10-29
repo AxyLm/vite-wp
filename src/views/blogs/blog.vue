@@ -40,7 +40,7 @@
 <template>
   <div>
     <Head>
-      <title>{{ post?.title || postId }}</title>
+      <title>{{ post?.title }}</title>
     </Head>
     <div class="post m-auto px-7 py-10">
       <h1 class="text-5xl font-bold">{{ post?.title }}</h1>

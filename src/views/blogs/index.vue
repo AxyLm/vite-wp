@@ -32,7 +32,7 @@
     <ul>
       <li v-for="item in posts" :key="item.node.postId" class="post-item mb-6">
         <RouterLink
-          :to="`/posts/${item.node.postId}`"
+          :to="`/blog/${item.node.postId}`"
           class="text-base-8 transition-colors hover:text-base-13 dark:text-base-6 dark:hover:text-base-1"
         >
           <span class="text-md font-bold">

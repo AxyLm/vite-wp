@@ -163,7 +163,7 @@ yarn-error.log
 yarn.lock
 package-lock.json
 src/components.d.ts
-
+.vite-ssg-temp
 
 # End of https://www.toptal.com/developers/gitignore/api/node,vue,vuejs
 

@@ -29,8 +29,12 @@ export const createApp = ViteSSG(
     app.use(pinia);
 
     if (isClient) {
-      router.beforeEach(() => NProgress.start());
-      router.afterEach(() => NProgress.done());
+      router.beforeEach(() => {
+        NProgress.start();
+      });
+      router.afterEach(() => {
+        NProgress.done();
+      });
     }
   },
 );
