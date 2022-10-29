@@ -3,7 +3,6 @@
   <main>
     <router-view></router-view>
   </main>
-  <!-- <footer> </footer> -->
 </template>
 <script lang="ts" setup>
   import Header from './header.vue';

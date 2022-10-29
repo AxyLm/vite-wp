@@ -4,6 +4,8 @@ import Icons from 'unplugin-icons/vite';
 import Components from 'unplugin-vue-components/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
+import Pages from 'vite-plugin-pages';
+import Markdown from 'vite-plugin-vue-markdown';
 
 // https://vitejs.dev/config/
 export default {
@@ -33,10 +35,17 @@ export default {
 
   plugins: [
     vue({
-      include: [/\.vue$/],
+      include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
     }),
-
+    Pages({
+      extensions: ['vue', 'md'],
+      pagesDir: 'src/pages',
+    }),
+    Markdown({
+      // wrapperComponent: 'post',
+      headEnabled: true,
+    }),
     Icons({
       scale: 1,
       defaultStyle: 'display:inline', // Style apply to icons
@@ -50,6 +59,8 @@ export default {
       },
     }),
     Components({
+      extensions: ['vue', 'md'],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       resolvers: [
         IconsResolver({
           prefix: 'icon',

@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{vue,md,js,ts,jsx,tsx}'],
   safelist: ['bg-blue-500', 'text-center', 'hover:opacity-100', 'lg:text-right'],
   darkMode: 'class',
   theme: {

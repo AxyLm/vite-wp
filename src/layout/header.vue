@@ -30,11 +30,11 @@
             </svg>
           </label>
         </li>
-        <li>
+        <!-- <li>
           <a href="https://github.com/AxyLm/vite-wp" class="link" target="_blank">
             <icon-carbon:logo-github class="h-7 w-7" />
           </a>
-        </li>
+        </li> -->
       </ul>
     </nav>
   </header>
