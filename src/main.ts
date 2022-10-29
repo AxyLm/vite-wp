@@ -15,38 +15,22 @@ export async function includedRoutes(paths: string[], routes: RouteRecordRaw[]) 
     res.data.posts.edges.map((e) => e.node.postId),
   );
 
-  return paths.concat(postIds.map((id) => `/posts/${id}`));
+  return paths.concat(postIds.map((id) => `/blog/${id}`));
 }
 
-if (!import.meta.env.SSR) {
-  NProgress.start();
-}
 export const createApp = ViteSSG(
   // the root component
   App,
   // vue-router options
   { routes: baseRoutes },
   // function to have custom setups
-  ({ app, router, routes, isClient, initialState, onSSRAppRendered }) => {
-    onSSRAppRendered(() => {
-      if (!import.meta.env.SSR) {
-        NProgress.done();
-      }
-    });
+  ({ app, router, routes, isClient }) => {
     const pinia = createPinia();
     app.use(pinia);
 
-    router.beforeEach((to, from) => {
-      if (to.path !== from.path) {
-        if (!import.meta.env.SSR) {
-          NProgress.start();
-        }
-      }
-    });
-    router.afterEach(() => {
-      if (!import.meta.env.SSR) {
-        NProgress.done();
-      }
-    });
+    if (isClient) {
+      router.beforeEach(() => NProgress.start());
+      router.afterEach(() => NProgress.done());
+    }
   },
 );

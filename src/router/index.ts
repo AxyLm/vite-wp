@@ -1,7 +1,7 @@
 import { RouteRecordRaw } from 'vue-router';
 
-import Post from '~/views/blogs/blog.vue';
-import PostList from '~/views/blogs/index.vue';
+import Blog from '~/views/blogs/blog.vue';
+import Blogs from '~/views/blogs/index.vue';
 import Layout from '~/layout/index.vue';
 
 const routes: RouteRecordRaw[] = [
@@ -11,14 +11,14 @@ const routes: RouteRecordRaw[] = [
     component: Layout,
     children: [
       {
-        name: 'Posts',
+        name: 'Blog',
         path: '/',
-        component: PostList,
+        component: Blogs,
       },
       {
-        name: 'Post',
-        path: '/posts/:postId',
-        component: Post,
+        name: 'BlogDesc',
+        path: '/blog/:postId',
+        component: Blog,
       },
     ],
   },

@@ -27,10 +27,16 @@ export default {
     manifest: true,
     chunkSizeWarningLimit: 533,
   },
+  optimizeDeps: {
+    include: ['vue', 'vue-router', '@vueuse/core'],
+  },
+
   plugins: [
     vue({
       include: [/\.vue$/],
+      reactivityTransform: true,
     }),
+
     Icons({
       scale: 1,
       defaultStyle: 'display:inline', // Style apply to icons
@@ -52,4 +58,8 @@ export default {
       dts: 'src/components.d.ts',
     }),
   ],
+  ssgOptions: {
+    formatting: 'minify',
+    format: 'cjs',
+  },
 };
