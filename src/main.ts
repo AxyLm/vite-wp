@@ -6,9 +6,12 @@ import './style/index.less';
 import { ViteSSG } from 'vite-ssg';
 import { routes } from './router';
 import NProgress from 'nprogress';
+import { Head } from '@vueuse/head';
 
-export const createApp = ViteSSG(App, { routes }, ({ router, isClient }) => {
+export const createApp = ViteSSG(App, { routes }, ({ app, router, isClient }) => {
   if (isClient) {
+    // eslint-disable-next-line vue/no-reserved-component-names
+    app.component('Head', Head);
     router.beforeEach(() => {
       NProgress.start();
     });

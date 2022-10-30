@@ -6,7 +6,8 @@
 
     <nav class="p-6 text-right">
       <ul class="flex items-center justify-end">
-        <li><RouterLink to="/" active-class="font-bold"> Blog </RouterLink></li>
+        <!-- <li><RouterLink to="/" active-class="font-bold"> Blog </RouterLink></li> -->
+        <li><RouterLink to="/moments" active-class="font-bold"> Moments </RouterLink></li>
         <li class="h-7 w-7">
           <label class="swap swap-rotate">
             <input type="checkbox" @click.prevent="toggleDark()" />

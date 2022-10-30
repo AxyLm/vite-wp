@@ -1,5 +1,5 @@
 <template>
-  <div> 2 234 </div>
+  <div> about </div>
 </template>
 <script lang="ts" setup>
   import { useHead } from '@vueuse/head';
