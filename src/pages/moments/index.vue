@@ -2,9 +2,82 @@
   <Head>
     <title>Moment</title>
   </Head>
-  <div class="moments mx-auto pb-10">
+  <div class="w-full pb-20">
     <!-- <h2 class="title">Moment</h2> -->
-    <div v-for="item in list" :key="item.id">
+
+    <section
+      class="suzhou mx-auto"
+      style="width: 60vw; height: 40vw; max-width: 95%; font-size: 1rem; line-height: 1.75"
+    >
+      <ul class="grid h-full w-full grid-cols-6 grid-rows-4 gap-1">
+        <li class="col-span-6 row-span-2">
+          <img
+            src="../../assets/images/moments/2022-10-suzhou/3.jpeg"
+            alt=""
+            class="h-full w-full object-cover"
+          />
+        </li>
+        <li class="col-span-2 row-span-2">
+          <img
+            src="../../assets/images/moments/2022-10-suzhou/2.jpeg"
+            alt=""
+            class="h-full w-full object-cover"
+          />
+        </li>
+        <li class="col-span-2 row-span-2">
+          <img
+            src="../../assets/images/moments/2022-10-suzhou/1.jpeg"
+            alt=""
+            class="h-full w-full object-cover"
+          />
+        </li>
+        <li class="col-span-2 row-span-2">
+          <img
+            src="../../assets/images/moments/2022-10-suzhou/5.jpeg"
+            alt=""
+            class="h-full w-full object-cover"
+          />
+        </li>
+      </ul>
+    </section>
+
+    <section
+      class="suzhou mx-auto"
+      style="width: 60vw; height: 40vw; max-width: 95%; font-size: 1rem; line-height: 1.75"
+    >
+      <ul class="mt-1 grid h-full w-full grid-cols-6 grid-rows-4 gap-1">
+        <li class="col-span-4 row-span-4">
+          <img
+            src="../../assets/images/moments/2022-10-suzhou/4.JPG"
+            alt=""
+            class="h-full w-full object-cover"
+          />
+        </li>
+        <li class="col-span-2 row-span-1">
+          <img
+            src="../../assets/images/moments/2022-10-suzhou/6.jpeg"
+            alt=""
+            class="h-full w-full object-cover"
+          />
+        </li>
+        <li class="col-span-2 row-span-1">
+          <img
+            src="../../assets/images/moments/2022-10-suzhou/7.png"
+            alt=""
+            class="h-full w-full object-cover"
+          />
+        </li>
+        <li class="col-span-2 row-span-2">
+          <img
+            src="../../assets/images/moments/2022-10-suzhou/1.jpeg"
+            alt=""
+            class="h-full w-full object-cover"
+          />
+        </li>
+      </ul>
+    </section>
+
+    <!-- <div v-for="item in list" :key="item.id">
       <ul class="moment-ul">
         <li v-for="media in item.medias" :key="media.url">
           <div class="img-card">
@@ -16,7 +89,7 @@
         <span> <icon-ion:location-outline /> {{ item.location }}</span>
         <span>{{ item.date }}</span>
       </p>
-    </div>
+    </div> -->
   </div>
 </template>
 <script lang="ts">
